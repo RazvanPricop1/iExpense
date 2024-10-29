@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct AddView: View {
-    @State private var name = ""
+    @State private var name = "New entry"
     @State private var type = "Personal"
     @State private var amount = 0.0
     @Environment(\.dismiss) var dismiss
@@ -19,7 +19,7 @@ struct AddView: View {
     var body: some View {
         NavigationStack {
             Form {
-                TextField("Name", text: $name)
+//                TextField("Name", text: $name)
                 
                 Picker("Type", selection: $type) {
                     ForEach(types, id: \.self) { type in
@@ -29,7 +29,7 @@ struct AddView: View {
                 
                 TextField("Amount", value: $amount, format: .currency(code: UserDefaults.standard.string(forKey: "currencyCode") ?? "USD"))
             }
-            .navigationTitle("Add Expense")
+            .navigationTitle($name)
             .navigationBarTitleDisplayMode(.inline)
             .navigationBarBackButtonHidden()
             .toolbar {
