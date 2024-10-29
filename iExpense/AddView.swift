@@ -30,6 +30,7 @@ struct AddView: View {
                 TextField("Amount", value: $amount, format: .currency(code: UserDefaults.standard.string(forKey: "currencyCode") ?? "USD"))
             }
             .navigationTitle("Add Expense")
+            .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 Button("Save") {
                     let item = ExpenseItem(name: name, type: type, amount: amount)
